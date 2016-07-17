@@ -1,6 +1,6 @@
-LOCAL_PATH := $(call my-dir)
+ifeq ($(call my-dir),$(call project-path-for,bt-vendor))
 
-ifeq ($(LOCAL_PATH),$(call project-path-for,bt-vendor))
+LOCAL_PATH := $(call my-dir)
 
 # TODO:  Find a better way to separate build configs for ADP vs non-ADP devices
 ifneq ($(BOARD_IS_AUTOMOTIVE),true)
@@ -12,4 +12,5 @@ ifneq ($(BOARD_IS_AUTOMOTIVE),true)
     include $(call all-named-subdir-makefiles,$(TARGET_BOARD_PLATFORM))
   endif
 endif
+
 endif
